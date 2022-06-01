@@ -1,3 +1,6 @@
+# CarSharing module specific
+/CarSharing/src/carsharing/db
+
 # Created by https://www.gitignore.io/api/java,gradle,intellij
 # Edit at https://www.gitignore.io/?templates=java,gradle,intellij
 
