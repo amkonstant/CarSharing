@@ -1,0 +1,34 @@
+apply plugin: 'hyperskill'
+
+subprojects {
+    apply plugin: 'application'
+    apply plugin: 'java'
+
+    repositories {
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+    }
+
+    dependencies {
+        implementation group: 'com.h2database', name: 'h2', version: '1.4.200'
+        testImplementation 'com.github.hyperskill:hs-test:release-SNAPSHOT'
+    }
+
+    sourceSets {
+        main.java.srcDir 'src'
+        test.java.srcDir 'test'
+    }
+}
+
+project(':util') {
+    dependencies {
+        implementation 'com.github.hyperskill:hs-test:release-SNAPSHOT'
+    }
+}
+
+configure(subprojects.findAll {it.name != 'util'}) {
+    dependencies {
+        testImplementation project(':util').sourceSets.main.output
+        testImplementation project(':util').sourceSets.test.output
+    }
+}
