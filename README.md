@@ -1,1 +1,1 @@
-# CarSharing
+# JetBrains Academy Projects
